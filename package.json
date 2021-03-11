@@ -11,7 +11,7 @@
     "gen": "yarn tsc --declaration",
     "test": "jest --config=jest.config.js"
   },
-  "keywords": [],
+  "keywords": ["vite", "vite plugin", "commonjs to es module"],
   "dependencies": {
     "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
