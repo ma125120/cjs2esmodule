@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "target": "ES6",
+    "module": "CommonJS",
+    "allowJs": false,
+    "esModuleInterop": true
+  },
+  "exclude": ["lib", "bin", "__test__"]
+}

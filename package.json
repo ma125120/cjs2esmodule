@@ -1,0 +1,28 @@
+{
+  "name": "cjs2esmodule",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "description": "将commonjs转为es module，可在vite中使用，也可直接转换文件",
+  "license": "MIT",
+  "repository": "git@github.com:ma125120/cjs2esmodule.git",
+  "author": "马鹏达",
+  "email": "1251208555@qq.com",
+  "scripts": {
+    "gen": "yarn tsc --declaration",
+    "test": "jest --config=jest.config.js"
+  },
+  "keywords": [],
+  "dependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "glob": "^7.1.6"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.33",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.3",
+    "typescript": "^4.2.3"
+  }
+}
