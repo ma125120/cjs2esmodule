@@ -2,7 +2,6 @@ import * as t from '@babel/types'
 import { getName, getSafe } from '../utils/get';
 
 export function replaceExports(node, path) {
-  
   const objName = getSafe(node, 'left.object.name');
   const name = getName(node, 'left.property')
 

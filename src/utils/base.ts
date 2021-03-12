@@ -32,20 +32,28 @@ export const visitors = {
   AssignmentExpression(path) {
     try {
       const { node } = path
-    replaceExports(node, path)
+      replaceExports(node, path)
     } catch(err) {
       console.log(err)
     }
   },
 }
 
-export const transformFileBase = (src, id = '') => {
-  const ast = parser.parse(src);
-  traverse(ast, visitors)
+export const transformFileBase = (src) => {
+  try {
+    const ast = parser.parse(src);
+    traverse(ast, visitors);
 
-  return generate(ast,);
+    return generate(ast,);
+  } catch(err) {
+    // sourceType 默认为 script，如果报错，则用 module 解析
+    const ast = parser.parse(src, { sourceType: "module" });
+    traverse(ast, visitors);
+
+    return generate(ast,);
+  }
 }
 
 export function isCjsFile(content) {
-  return /(exports[\.\[]|module\.exports)/g.test(content)
+  return /(exports[\.\[]|module\.exports|require\()/g.test(content)
 }

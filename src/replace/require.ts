@@ -1,11 +1,12 @@
 import * as t from '@babel/types'
+import { getName } from '../utils/get'
 
 export function replaceWithProp(ctr, path) {
   // const cmp = require('react').Component
   // ctr.id.name: cmp
   // ctr.init.property.name: Component
   // ctr.init.object.arguments[0].name: react
-  if (ctr.init.object.callee && ctr.init.object.callee.name === 'require') {
+  if (getName(ctr, `init.object.callee`) === 'require') {
     path.replaceWith(
       t.importDeclaration(
         [
@@ -22,7 +23,7 @@ export function replaceWithDefault(ctr, path) {
   // const react1 = require('react')
   // ctr.id.name: react1
   // ctr.init.object.arguments[0].name: react
-  if (ctr.init.callee.name === 'require') {
+  if (getName(ctr, `init.callee`) === 'require') {
     path.replaceWith(
       t.importDeclaration(
         [
@@ -37,8 +38,6 @@ export function replaceWithDefault(ctr, path) {
 
 export function replaceWithRest(ctr, path) {
   // const { react: react1 } = require('react')
-  // ctr.id.name: react1
-  // ctr.init.object.arguments[0].name: react
 
   if (ctr.init.callee.name === 'require') {
     path.replaceWith(
@@ -54,7 +53,6 @@ export function replaceWithRest(ctr, path) {
 export function replaceWithRequire(path) {
   // require('react')
   if (path.node.callee.name === 'require') {
-    const arg = path.node.arguments[0]
     path.parentPath.replaceWith(
       t.importDeclaration(
         [],
