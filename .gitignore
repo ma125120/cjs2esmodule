@@ -36,7 +36,3 @@ functions/mock
 # screenshot
 screenshot
 .firebase
-
-lib/**/*
-util/**/*
-bin/**/*
